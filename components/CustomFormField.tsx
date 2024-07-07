@@ -1,19 +1,21 @@
 'use client'
 import React from 'react'
 import {
-    Form,
+    
     FormControl,
-    FormDescription,
+  
     FormField,
     FormItem,
     FormLabel,
     FormMessage,
   } from "@/components/ui/form"
 import {Control} from 'react-hook-form'
-
+import 'react-phone-number-input/style.css'
 import { Input } from './ui/input'
 import { FormFieldType } from './forms/PatientForm'
 import Image from 'next/image'
+import PhoneInput from 'react-phone-number-input'
+import { E164Number } from 'libphonenumber-js/core'
 interface CustomProps {
     control: Control<any>,
     fieldType: FormFieldType,
@@ -28,7 +30,7 @@ interface CustomProps {
     children?: React.ReactNode,
     renderSkeleton?: (field:any) => React.ReactNode,
 }
-const RenderField = ({field,props}: {field: any, props: CustomProps}) => {
+const RenderField = ({field,props}: {field: any; props: CustomProps}) => {
     const {fieldType, iconSrc, iconAlt, placeholder,} = props;
     switch (fieldType) {
         case FormFieldType.INPUT:
@@ -48,12 +50,25 @@ const RenderField = ({field,props}: {field: any, props: CustomProps}) => {
                         <Input
                         placeholder={placeholder}
                         {...field}
-                        className='shad-input border=0'
+                        className='shad-input border-0'
                         />
                     </FormControl>
                 </div>
+            );
+        case FormFieldType.PHONE_INPUT:
+            return(
+                <FormControl>
+                    <PhoneInput 
+                    defaultCountry='CA'
+                    placeholder={placeholder}
+                    international
+                    withCountryCallingCode
+                    value={field.value as E164Number| undefined}
+                    onChange={field.onChange}
+                    className="input-phone"
+                    />
+                </FormControl>
             )
-    
         default:
             break;
     }
