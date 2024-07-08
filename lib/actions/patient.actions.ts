@@ -37,3 +37,13 @@ export const createUser = async (user: CreateUserParams) => {
       console.error("An error occurred while fetching user:", error);
     }
   }
+
+  export const registerPatient = async ({identificationDocument, ...patient}: RegisterUserParams) => {
+    try {
+      
+    } catch (error) {
+      console.log(error)
+      
+    }
+  }
+
