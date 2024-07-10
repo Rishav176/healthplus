@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import { Doctors } from '@/constants';
 import { getAppointment } from '@/lib/actions/appointment.actions';
 import { formatDateTime } from '@/lib/utils';
@@ -9,6 +10,8 @@ const Success = async ({params: {userId}, searchParams}: SearchParamProps) => {
     const appointmentId = (searchParams?.appointmentId as string) || '';
     const appointment= await getAppointment(appointmentId);
     const doctor = Doctors.find((doc)=> doc.name === appointment.primaryPhysician)
+    const date = new Date();
+  const year = date.getFullYear();
     return (
     <div className='flex h-screen max-h-screen px-[5%]'>
         <div className='success-img'>
@@ -45,7 +48,12 @@ const Success = async ({params: {userId}, searchParams}: SearchParamProps) => {
                         <p>{formatDateTime(appointment.schedule).dateTime}</p>
                     </div>
                 </section>
-
+            <Button variant='outline' className='shad-primary-btn' asChild>
+                <Link href={`/patients/${userId}/new-appointment`}>
+                    New Appointment
+                </Link>
+            </Button>
+            <p className='copyright'>© {year} HealthPlus</p>
         </div>    
     </div>
   )
