@@ -1,6 +1,6 @@
 import AppointmentForm from "@/components/forms/AppointmentForm";
 import { getPatient } from "@/lib/actions/patient.actions";
-
+import * as Sentry from "@sentry/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,6 +9,7 @@ const NewAppointment = async ({params: {userId}}: SearchParamProps) => {
  
 
   const patient = await getPatient(userId);
+  Sentry.metrics.set("user_view_new-appointment",patient.name)
   const date = new Date();
   const year = date.getFullYear();
   return (
