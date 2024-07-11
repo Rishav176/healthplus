@@ -16,7 +16,7 @@ const NewAppointment = async ({params: {userId}}: SearchParamProps) => {
     <div className="flex h-screen max-h-screen">
       <section className="remove-scrollbar container my-auto ">
         <div className="sub-container max-w-[860px] flex-1 justify-between">
-          <Image src="/assets/icons/logo-full.svg" height={1000} width={1000} alt='patient' className="mb-12 h-10 w-fit"/>
+          <Image src="/assets/icons/logo-icon.svg" height={1000} width={1000} alt='patient' className="mb-12 h-10 w-fit"/>
         
 
         <AppointmentForm 

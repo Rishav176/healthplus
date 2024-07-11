@@ -19,7 +19,7 @@ const Success = async ({params: {userId}, searchParams}: SearchParamProps) => {
     <div className='flex h-screen max-h-screen px-[5%]'>
         <div className='success-img'>
                <Link href="/">
-                    <Image src="/assets/icons/logo-full.svg"
+                    <Image src="/assets/icons/logo-icon.svg"
                         height={1000} width={1000} alt='logo' className=" h-10 w-fit"/>
                </Link> 
                 <section className='flex flex-col items-center'>
@@ -64,4 +64,3 @@ const Success = async ({params: {userId}, searchParams}: SearchParamProps) => {
 
 export default Success
 
-// /patients/668a8347002e1b1e55dc/new-appointment/success?appointmentId=668d2c770030411ee1c9
